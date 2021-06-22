@@ -21,7 +21,7 @@ class _ManageLightState extends State<ManageLight>
     with TickerProviderStateMixin {
   int _selectedIndex = 0;
   GlobalKey listKey = GlobalKey();
-  double rating = 0;
+  double rating = 1;
   AnimationController animationController;
   AnimationController mainContentController;
 
@@ -116,10 +116,10 @@ class _ManageLightState extends State<ManageLight>
               //Title Info
               SizedBox(
                 width: size.width,
-                height: size.height * 0.3,
+                height: size.height * 0.35,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20.0),
-                  child: TitleInfo(widget.gridModel, myColor, rating),
+                  child: TitleInfo(widget.gridModel, myColor, rating, size.height),
                 ),
               ),
 
@@ -127,8 +127,8 @@ class _ManageLightState extends State<ManageLight>
               Transform.scale(
                 scale: scale,
                 child: Container(
-                  margin: EdgeInsets.only(top: size.height * 0.35),
-                  height: size.height * 0.65,
+                  margin: EdgeInsets.only(top: size.height * 0.4),
+                  height: size.height * 0.7,
                   width: size.width,
                   decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.9),

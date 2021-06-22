@@ -6,9 +6,9 @@ class TitleInfo extends StatelessWidget {
   final GridModel gridModel;
   final Color myColor;
   final double rating;
+  final size;
 
-  TitleInfo(this.gridModel, this.myColor, this.rating);
-
+  TitleInfo(this.gridModel, this.myColor, this.rating, this.size);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class TitleInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Container(
-              width: 175.0,
+              width: 180,
               padding: EdgeInsets.only(left: 10.0),
               child: Container(
                 child: Row(
@@ -29,7 +29,7 @@ class TitleInfo extends StatelessWidget {
                   // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GestureDetector(
-                      onTap: ()=>Navigator.of(context).pop(),
+                      onTap: () => Navigator.of(context).pop(),
                       child: SvgPicture.asset(
                         'assets/icons/ionic-md-arrow-round-back.svg',
                         height: 25.0,
@@ -98,15 +98,16 @@ class TitleInfo extends StatelessWidget {
             )
           ],
         ),
-    
+        SizedBox(
+          height: 10.0,
+        ),
         Container(
-          height: 60,
+          height: size * 0.08,
           width: double.infinity,
           child: ListView(
-
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-                       children: [
+            children: [
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
@@ -125,23 +126,24 @@ class TitleInfo extends StatelessWidget {
               ),
               SizedBox(
                 width: 10.0,
-              ),ElevatedButton.icon(
+              ),
+              ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0)),
                   padding:
-                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
                 ),
                 onPressed: () {},
-                icon: SvgPicture.asset("assets/icons/furniture-and-household.svg",
+                icon: SvgPicture.asset(
+                    "assets/icons/furniture-and-household.svg",
                     color: Colors.black),
                 label: Text(
                   "Desk Light",
                   style: TextStyle(color: Colors.black, fontSize: 18.0),
                 ),
               ),
-
               SizedBox(
                 width: 10.0,
               ),
@@ -151,7 +153,7 @@ class TitleInfo extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0)),
                   padding:
-                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
                 ),
                 onPressed: () {},
                 icon: SvgPicture.asset("assets/icons/bed (1).svg",
@@ -163,13 +165,14 @@ class TitleInfo extends StatelessWidget {
               ),
               SizedBox(
                 width: 10.0,
-              ),ElevatedButton.icon(
+              ),
+              ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0)),
                   padding:
-                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
                 ),
                 onPressed: () {},
                 icon: SvgPicture.asset("assets/icons/balcony.svg",
@@ -179,7 +182,6 @@ class TitleInfo extends StatelessWidget {
                   style: TextStyle(color: Colors.black, fontSize: 18.0),
                 ),
               ),
-
             ],
           ),
         ),

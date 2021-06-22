@@ -9,11 +9,12 @@ class ScencesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size=MediaQuery.of(context).size;
     return Container(
       // padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 20.0),
-      height: 70,
-      width: 150,
-      margin: EdgeInsets.symmetric(horizontal: 10.0,vertical: 10.0),
+      height: size.height*0.08,
+      width: size.width*0.32,
+      margin: EdgeInsets.symmetric(horizontal: 10.0,vertical: 8.0),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
           gradient: LinearGradient(

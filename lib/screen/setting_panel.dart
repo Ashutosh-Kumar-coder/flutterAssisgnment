@@ -4,6 +4,9 @@ class SettingPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Setting Panel"),);
+    return Container(
+      color: Colors.white70,
+      child: Center(child: Text("Setting Panel",style: TextStyle(fontSize: 25.0),)),
+    );
   }
 }

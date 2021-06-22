@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutterassignment/screen/profile_screen.dart';
 
 class AppBarWidget extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -28,11 +28,25 @@ class AppBarWidget extends StatelessWidget {
             ),
           ],
         ),
-        Image.asset(
-          "assets/icons/user.png",
-          height: 90,
-          width: 90,
-          fit: BoxFit.fill,
+        // Image.asset(
+        //   "assets/icons/ashu.png",
+        //   height: 90,
+        //   width: 90,
+        //   fit: BoxFit.fill,
+        // )
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => ProfilePage()));
+          },
+          child: CircleAvatar(
+            radius: 38,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              radius: 35,
+              backgroundImage: AssetImage("assets/icons/ashu.png"),
+            ),
+          ),
         )
       ],
     );
