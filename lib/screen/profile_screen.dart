@@ -24,17 +24,19 @@ class ProfilePage extends StatelessWidget {
               Row(
                 children: [
                   CircleAvatar(
-                    radius: 70,
+                    radius: size.width*0.18,
                     backgroundColor: Color(0xFF3451A0).withOpacity(0.5),
                     child: CircleAvatar(
-                      radius: 65,
+                      radius:size.width*0.16,
                       backgroundImage: AssetImage("assets/icons/ashu.png"),
                     ),
                   ),
-                  Text(
-                    "Ashutosh Kumar",
-                    style:
-                        TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                  Expanded(
+                    child: Text(
+                      "Ashutosh Kumar",
+                      style:
+                          TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                    ),
                   )
                 ],
               ),

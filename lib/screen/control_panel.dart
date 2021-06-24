@@ -38,11 +38,12 @@ class ControlPanel extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(25.0),
                       topRight: Radius.circular(25.0))),
-              child: ControlPanelWidget(),
+              child: ControlPanelWidget(size),
             ),
           ],
         ),
       ),
     );
   }
+
 }

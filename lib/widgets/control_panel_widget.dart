@@ -4,6 +4,10 @@ import 'package:flutterassignment/screen/manage_light.dart';
 import 'package:flutterassignment/util/grip_util.dart';
 
 class ControlPanelWidget extends StatelessWidget {
+  final Size size;
+
+  ControlPanelWidget(this.size);
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -23,17 +27,16 @@ class ControlPanelWidget extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              crossAxisSpacing: 30.0,
-              mainAxisSpacing: 30.0,
+              crossAxisSpacing: size.width*0.09,
+              mainAxisSpacing: size.width*0.09,
               // childAspectRatio: 3.2,
-              mainAxisExtent: 150.0,
-              maxCrossAxisExtent: 150.0),
+              mainAxisExtent: size.width*0.36,
+              maxCrossAxisExtent: size.width*0.36),
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => ManageLight(GridUtil.gridList[index])));
+                Navigator.of(context).push(_createRoute(index));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -48,14 +51,15 @@ class ControlPanelWidget extends StatelessWidget {
                       children: [
                         SvgPicture.asset(
                           "${GridUtil.gridList[index].imgPath}",
-                          height: 50,
-                          width: 50,
+                          height:size.width*0.11,
+                          width: size.width*0.11,
                           fit: BoxFit.fill,
                         ),
                         Text(
                           "${GridUtil.gridList[index].title}",
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
+                              fontSize: 18, fontWeight: FontWeight.bold,),
                         ),
                         Text("${GridUtil.gridList[index].quantity}",
                             style: TextStyle(
@@ -72,6 +76,20 @@ class ControlPanelWidget extends StatelessWidget {
           itemCount: GridUtil.gridList.length,
         )
       ],
+    );
+  }
+
+  Route _createRoute(int index) {
+    return PageRouteBuilder(
+      transitionDuration: Duration(seconds: 1),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        animation = CurvedAnimation(parent: animation, curve: Curves.ease);
+
+        return FadeTransition(opacity:animation,child: child);
+      },
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return ManageLight(GridUtil.gridList[index]);
+      },
     );
   }
 }
